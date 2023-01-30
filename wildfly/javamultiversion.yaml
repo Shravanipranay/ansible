@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars: 
-    version: "11"
+    version: "13"
   tasks:
    - name: install default-jdk
      apt:
