@@ -1,5 +1,5 @@
 ---
-- name: mangodb installation
+- name: mongodb installation
   hosts: all
   become: yes
   tasks:
@@ -14,12 +14,12 @@
         filename: mongodb-org-5.0
     - name: install mangodb
       apt:
-        name: mangodb-org-5.0
+        name: mongodb-org
         state: present
         update_cache: yes
     - name: restart the service
       systemd:
-        name: mangod
+        name: mongod
         state: restarted
         enabled: yes
         deamon_reload: yes
