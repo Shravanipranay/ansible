@@ -1,0 +1,30 @@
+---
+- name: mangodb installation
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add a key from a file 
+      ansible.builtin.apt_key:
+        url: https://www.mongodb.org/static/pgp/server-5.0.asc 
+        state: present
+    - name: add repsository
+      apt_repository:
+        repo: deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse
+        state: present
+        filename: mongodb-org-5.0
+    - name: install mangodb
+      apt:
+        name: mangodb-org
+        state: present
+        update_cache: yes
+    - name: restart the service
+      systemd:
+        name: mangod
+        state: restarted
+        enabled: yes
+        deamon_reload: yes
+
+      
+    
+
+    
