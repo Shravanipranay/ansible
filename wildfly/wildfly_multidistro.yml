@@ -1,0 +1,137 @@
+---
+- name: install wildfly
+  hosts: all
+  become: yes
+  vars: 
+    username: wildfly
+    groupname: wildfly
+    user_home: /opt/wildfly
+    user_shell: /sbin/nologin
+    service_dir: /etc/wildfly
+  tasks:
+   - name: install java
+     package:
+       name: "{{ java_package_name }}"
+       update_cache: yes
+       state: present
+   - name: create wildfly group
+     group:
+      name: "{{ groupname }}"
+      state: present
+   - name: create wildfly user
+     user:
+       name: "{{ username }}"
+       create_home: yes
+       system: yes
+       home: "{{ user_home }}"
+       shell: "{{ user_shell }}"
+       state: present
+   - name: create a directory
+     ansible.builtin.file:
+       name: /tmp
+       state: directory
+   - name: get tomcat stats
+      stat:
+        path: /opt/wildfly/bin/launch.sh
+      register: wildfly_startup
+   - name: download wildfly
+     ansible.builtin.get_url:
+       url: https://github.com/wildfly/wildfly/releases/download/27.0.1.Final/wildfly-27.0.1.Final.tar.gz
+       dest: /tmp
+     when: not wildfly_startup.stat exist  
+   - name: extracting the file
+     ansible.builtin.unarchive:
+       src: /tmp/wildfly-27.0.1.Final.tar.gz
+       dest: /tmp
+       remote_src: yes
+     when: not wildfly_startup.stat exist
+   - name: copy a file
+     ansible.builtin.copy:
+       src: /tmp/wildfly-27.0.1.Final/
+       dest: "{{ user_home }}"
+       remote_src: yes
+   - name: change permissions
+     ansible.builtin.file:
+       dest: "{{ user_home }}"
+       recurse: true
+       owner: "{{ username }}"
+       group: "{{ groupname }}"
+       state: directory
+   - name: create directory
+     ansible.builtin.file:
+       name: "{{ service_dir }}"
+       state: directory
+   - name: config file copy
+     copy:
+       src: "{{ user_home }}"/docs/contrib/scripts/systemd/wildfly.conf
+       dest: "{{ service_dir }}"/
+       remote_src: yes
+   - name: copy a file
+     ansible.builtin.copy:
+       src: "{{ user_home }}"/docs/contrib/scripts/systemd/launch.sh
+       dest: "{{ user_home }}"/bin
+       remote_src: yes
+   - name: add executable permissions to shell files
+     ansible.builtin.command: sudo sh -c 'chmod +x "{{ user_home }}"/bin/*.sh'
+   - name: copy a file
+     ansible.builtin.copy:
+       src: "{{ user_home }}"/docs/contrib/scripts/systemd/wildfly.service
+       dest: /etc/systemd/system/
+       remote_src: yes
+   - name: reload daemon and start tomcat
+     ansible.builtin.systemd:
+       name: wildfly
+       daemon_reload: yes
+       enabled: yes
+       state: started
+   - name: copy a file
+     ansible.builtin.copy:
+       src: /home/devops/mgmt-users.properties/
+       dest: /opt/wildfly/standalone/configuration/mgmt-users.properties
+   - name: copy a file
+     ansible.builtin.copy:
+       src: /home/devops/mgmt-users.properties/
+       dest: /opt/wildfly/domain/configuration/mgmt-users.properties
+   - name: copy a file
+     ansible.builtin.copy:
+       src: /home/devops/mgmt-group.properties/
+       dest: /opt/wildfly/domain/configuration/mgmt-users.properties
+   - name: copy a file
+     ansible.builtin.copy:
+       src: /home/devops/mgmt-group.properties/
+       dest: /opt/wildfly/standalone/configuration/mgmt-group.properties
+   - name: copy a  configure file
+     ansible.builtin.copy:
+       src: /home/devops/wildfly.conf
+       dest: /etc/wildfly/wildfly.conf
+   - name: copy a launch file
+     ansible.builtin.copy:
+       src: /home/devops/launch.sh
+       dest: /opt/wildfly/bin/launch.sh
+   - name: restart
+     systemd:
+       name: wildfly
+       state: restarted
+   - name: copy wildfly.service
+     ansible.builtin.copy:
+       src: /home/devops/wildfly.service
+       dest: /etc/systemd/system/wildfly.service
+   - name: create directory
+     file:
+       name: /var/run/wildfly/
+       state: directory
+   - name: change permissions
+     ansible.builtin.file:
+       dest: /var/run/wildfly/
+       recurse: true
+       owner: wildfly
+       group: wildfly
+       state: directory
+   - name: reload daemon and start tomcat
+     ansible.builtin.systemd:
+       name: wildfly
+       daemon_reload: yes
+       enabled: yes
+       state: started
+  
+    
