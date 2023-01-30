@@ -14,7 +14,7 @@
         filename: mongodb-org-5.0
     - name: install mangodb
       apt:
-        name: mangodb-org
+        name: mangodb-org-5.0
         state: present
         update_cache: yes
     - name: restart the service
