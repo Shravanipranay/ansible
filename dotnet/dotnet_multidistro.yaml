@@ -12,7 +12,7 @@
           update_cache: yes
         when: ansible_facts['distribution'] == "Ubuntu"
       - name: install rpm
-        file:
+        get_url:
           src: "https://packages.microsoft.com/config/centose{{ version }}/packages-microsoft-prod.rpm
           dest: /tmp/packages-microsoft-prod.rpm
         when: ansible_facts['distribution'] == "CentOS"
