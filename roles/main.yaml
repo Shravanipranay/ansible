@@ -1,0 +1,7 @@
+---
+- name: install wildfly
+  hosts: all
+  become: yes
+  roles:
+    - java
+    
