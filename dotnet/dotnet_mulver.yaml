@@ -3,7 +3,7 @@
     hosts: all
     become: yes
     vars:
-      dotnet_version: 6.0
+      dotnet_version: 7.0
     tasks:
       - name: install apt transport
         apt:
