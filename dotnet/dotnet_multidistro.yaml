@@ -6,10 +6,16 @@
       dotnet_pacakage_name:  dotnet-sdk-7.0
     tasks:
       - name: install apt transport
-        package:
-          name: transport_https
+        apt:
+          name: apt-transport-https
           state: present
           update_cache: yes
+        when: ansible_facts['distribution'] == "Ubuntu"
+      - name: install rpm package
+        community.general.apt_rpm:
+          pkg: https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+          state: present
+        when: ansible_facts['distribution'] == "CentOS"  
       - name: install dotnet
         package:
           name: " {{ dotnet_pacakage_name }} "
