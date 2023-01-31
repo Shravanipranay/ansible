@@ -15,7 +15,12 @@
         community.general.apt_rpm:
           pkg: https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
           state: present
-        when: ansible_facts['distribution'] == "CentOS"  
+        when: ansible_facts['distribution'] == "CentOS"
+      - name: add pacakge
+        yum:
+          name: /tmp/packages-microsoft-prod.rpm
+          state: present
+        when: ansible_facts['distribution'] == "CentOS" 
       - name: install dotnet
         package:
           name: " {{ dotnet_pacakage_name }} "

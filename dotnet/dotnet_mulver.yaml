@@ -10,6 +10,17 @@
           name: apt-transport-https
           state: present
           update_cache: yes
+      - name: install rpm
+        file:
+          src: https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+          dest: /tmp/packages-microsoft-prod.rpm
+        when: ansible_facts['distribution'] == "CentOS"
+      - name: add pacakge
+        yum:
+          name: /tmp/packages-microsoft-prod.rpm
+          state: present
+          update_cache: yes
+        when: ansible_facts['distribution'] == "CentOS"
       - name: install dotnet
         apt:
           name: " dotnet-sdk {{ dotnet_version }} "
