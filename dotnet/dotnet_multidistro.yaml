@@ -13,7 +13,7 @@
         when: ansible_facts['distribution'] == 'Ubuntu'
       - name: install rpm
         get_url:
-          url: "https://packages.microsoft.com/config/centose{{ version }}/packages-microsoft-prod.rpm
+          url: "https://packages.microsoft.com/config/centose{{ version }}/packages-microsoft-prod.rpm"
           dest: /tmp/packages-microsoft-prod.rpm
         when: ansible_facts['distribution'] == 'CentOS'
       - name: add pacakge
