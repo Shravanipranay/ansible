@@ -11,10 +11,10 @@
           state: present
           update_cache: yes
         when: ansible_facts['distribution'] == "Ubuntu"
-      - name: install rpm package
-        community.general.apt_rpm:
-          pkg: https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
-          state: present
+      - name: install rpm
+        file:
+          src: https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+          dest: /tmp/packages-microsoft-prod.rpm
         when: ansible_facts['distribution'] == "CentOS"
       - name: add pacakge
         yum:
