@@ -6,8 +6,8 @@
       dotnet_pacakage_name:  dotnet-sdk-7.0
     tasks:
       - name: install apt transport
-        apt:
-          name: apt-transport-https
+        package:
+          name: transport_https
           state: present
           update_cache: yes
       - name: install dotnet
