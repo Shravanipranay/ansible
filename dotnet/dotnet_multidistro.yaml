@@ -15,12 +15,12 @@
         get_url:
           url: "https://packages.microsoft.com/config/centose{{ version }}/packages-microsoft-prod.rpm
           dest: /tmp/packages-microsoft-prod.rpm
-        when: ansible_facts['distribution'] == "CentOS"
+        when: ansible_facts['distribution'] == "centOS"
       - name: add pacakge
         yum:
           name: /tmp/packages-microsoft-prod.rpm
           state: present
-        when: ansible_facts['distribution'] == "CentOS" 
+        when: ansible_facts['distribution'] == "centOS" 
       - name: install dotnet
         package:
           name: " dotnet-sdk {{ version }} "
