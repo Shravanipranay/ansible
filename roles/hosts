@@ -1,1 +1,2 @@
-172.31.41.77
+172.31.41.77 java_pacakage_name="openjdk-{{ version }}-jdk"
+172.31.46.234 java_pacakage_name="java-{{ version }}-openjdk-devel"
