@@ -1,0 +1,36 @@
+---
+  - name: install dotnet
+    hosts: all
+    become: yes
+    tasks:
+      - name: install apt transport
+        apt:
+          name: apt-transport-https
+          state: present
+          update_cache: yes
+      - name: adding repository
+        apt_repository:
+          repo: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+          state: present
+      - name: make directory
+        file:
+          name: /tmp
+          state: directory
+      - name: download repository
+        get_url:
+          src: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+          dest: /tmp
+      - name: install deb pacakges
+        apt:
+          name: ./packages-microsoft-prod.deb
+          state: present
+          update_cache: yes
+      - name: install dotnet
+        apt:
+          name: dotnet-sdk-6.0
+          state: present
+          update_cache: yes
+      
+
+
+
