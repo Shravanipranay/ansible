@@ -1,0 +1,17 @@
+---
+  - name: install dotnet
+    hosts: all
+    become: yes
+    vars:
+      dotnet_pacakage_name:  dotnet-sdk-7.0
+    tasks:
+      - name: install apt transport
+        apt:
+          name: apt-transport-https
+          state: present
+          update_cache: yes
+      - name: install dotnet
+        package:
+          name: " {{ dotnet_pacakage_name }} "
+          state: present
+          update_cache: yes
