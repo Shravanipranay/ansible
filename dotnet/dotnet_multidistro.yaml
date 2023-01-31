@@ -3,7 +3,7 @@
     hosts: all
     become: yes
     vars:
-      dotnet_pacakage_name:  dotnet-sdk-7.0
+      version: 7.0
     tasks:
       - name: install apt transport
         apt:
@@ -13,7 +13,7 @@
         when: ansible_facts['distribution'] == "Ubuntu"
       - name: install rpm
         file:
-          src: https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+          src: "https://packages.microsoft.com/config/centose{{ version }}/packages-microsoft-prod.rpm
           dest: /tmp/packages-microsoft-prod.rpm
         when: ansible_facts['distribution'] == "CentOS"
       - name: add pacakge
@@ -23,6 +23,6 @@
         when: ansible_facts['distribution'] == "CentOS" 
       - name: install dotnet
         package:
-          name: " {{ dotnet_pacakage_name }} "
+          name: " dotnet-sdk {{ version }} "
           state: present
           update_cache: yes
