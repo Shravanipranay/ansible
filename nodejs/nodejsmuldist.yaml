@@ -1,0 +1,10 @@
+---
+- name: install wildfly
+  hosts: all
+  become: yes
+  tasks:
+    - name: install nodejs
+      package:
+        name: nodejs
+        state: present
+        update_cache: yes
