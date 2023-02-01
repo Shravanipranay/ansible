@@ -28,7 +28,7 @@
          dest: /tmp
      - name: install apt transport
        apt:
-         name: apt-unzip
+         name: unzip
          state: present
      - name: unarchive the file
        unarchive: 
