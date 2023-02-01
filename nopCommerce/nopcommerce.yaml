@@ -9,7 +9,9 @@
          dest: /tmp
      - name: install apt transport
        apt:
-         name: apt-transport-https
+         name: 
+           - apt-transport-https
+           - aspnetcore-runtime-7.0
          state: present
          update_cache: yes
      - name: make directory
