@@ -20,6 +20,7 @@ sudo chown -R www-data nopCommerce/
 sudo vi  /etc/systemd/system/nopCommerce.service
 ```
  Service file:
+ ```
  [Unit]
 Description=Example nopCommerce app running on Xubuntu
 
@@ -38,8 +39,8 @@ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 [Install]
 WantedBy=multi-user.target
 ```
+```
 sudo systemctl start nopCommerce.service
 sudo systemctl status nopCommerce.service
 ```
-
-![preview] (nop1.png)
+![preview](Images/nop1.png)

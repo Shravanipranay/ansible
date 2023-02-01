@@ -1,1 +1,44 @@
 ---
+ - name: install nopCommerce on ubuntu
+   hosts: all
+   become: yes
+   tasks:
+     - name: install package
+       apt:
+        deb: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+     - name: install apt transport
+        apt:
+          name: apt-transport-https
+          state: present
+          update_cache: yes
+      - name: install dotnet
+        apt:
+          name: dotnet-sdk-6.0
+          state: present
+          update_cache: yes
+      - name: make directory
+        file:
+          path: /var/www/nopCommerce
+          state: directory
+      - name: download a file
+        get_url:
+          src: https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.1/nopCommerce_4.60.1_NoSource_linux_x64.zip
+          dest: /tmp
+      - name: unarchive the file
+        unarchive: 
+          src: nopCommerce_4.60.1_NoSource_linux_x64.zip
+          dest: /tmp
+          remote_src: yes
+      - name: make directory
+        file: 
+         name: bin
+         state: directory
+      - name: make directory
+        file: 
+         name: logs
+         state: directory
+      
+
+
+
+      
