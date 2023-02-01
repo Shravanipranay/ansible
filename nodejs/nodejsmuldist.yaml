@@ -3,6 +3,9 @@
   hosts: all
   become: yes
   tasks:
+    -name: install nodejs using shell file
+     shell: curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+     when: ansible_facts['distribution'] == 'CentOS' 
     - name: install nodejs
       package:
         name: nodejs
