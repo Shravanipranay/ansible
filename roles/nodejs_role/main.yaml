@@ -1,6 +1,6 @@
 ---
- - name: install wildfly
+ - name: install nodejs
    hosts: all
    become: yes
    roles:
-     - nodejs_role
+     - nodejs
