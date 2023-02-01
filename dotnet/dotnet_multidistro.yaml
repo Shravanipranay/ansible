@@ -11,6 +11,10 @@
           state: present
           update_cache: yes
         when: ansible_facts['distribution'] == 'Ubuntu'
+      - name: create directory
+        file:
+          name: /tmp
+          state: directory
       - name: install rpm
         get_url:
           url: "https://packages.microsoft.com/config/centos/{{ version }}/packages-microsoft-prod.rpm"
