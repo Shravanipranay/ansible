@@ -52,7 +52,7 @@
          state: directory
      - name: copy the service file
        copy:
-         src: nopCommerce.service
+         src: /home/devops/ansible/nopCommerce/nopCommerce.service
          dest: /etc/systemd/system/nopCommerce.service
      - name: restrt the nopcommerce
        systemd:
