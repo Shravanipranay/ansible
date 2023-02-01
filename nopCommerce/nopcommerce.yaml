@@ -9,7 +9,7 @@
          dest: /tmp
      - name: install package
        apt:
-         name: /tmp/packages-microsoft-prod.deb 
+         deb: /tmp/packages-microsoft-prod.deb 
          state: present
      - name: install apt transport
        apt:
