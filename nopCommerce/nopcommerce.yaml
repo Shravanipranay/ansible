@@ -24,7 +24,7 @@
          state: directory
      - name: download a file
        get_url:
-         src: https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.1/nopCommerce_4.60.1_NoSource_linux_x64.zip
+         url: https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.1/nopCommerce_4.60.1_NoSource_linux_x64.zip
          dest: /tmp
      - name: unarchive the file
        unarchive: 
