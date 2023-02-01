@@ -1,0 +1,7 @@
+---
+# tasks file for dummy
+- name: install java
+     package:
+       name: "{{ java_pacakage_name }}"
+       update_cache: yes
+       state: present
