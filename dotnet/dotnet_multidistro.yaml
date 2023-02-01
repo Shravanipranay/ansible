@@ -18,7 +18,7 @@
       - name: install rpm
         get_url:
           url: "https://packages.microsoft.com/config/centos/{{ version }}/packages-microsoft-prod.rpm"
-          dest: /tmp/packages-microsoft-prod.rpm
+          dest: /tmp
         when: ansible_facts['distribution'] == 'CentOS'
       - name: add pacakge
         yum:
