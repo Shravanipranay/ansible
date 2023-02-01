@@ -26,6 +26,10 @@
        get_url:
          url: https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.1/nopCommerce_4.60.1_NoSource_linux_x64.zip
          dest: /tmp
+     - name: install apt transport
+       apt:
+         name: apt-unzip
+         state: present
      - name: unarchive the file
        unarchive: 
          src: /tmp/nopCommerce_4.60.1_NoSource_linux_x64.zip
