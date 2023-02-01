@@ -5,9 +5,9 @@
   vars: 
     nodejs_version: 16
   tasks:
-    -name: install nodejs using shell file
-     shell: "curl -sL https://rpm.nodesource.com/setup_{{ "nodejs_version"}}.x | sudo bash -"
-     when: ansible_facts['distribution'] == 'CentOS' 
+    - name: install nodejs using shell file
+      shell: "curl -sL https://rpm.nodesource.com/setup_{{ "nodejs_version"}}.x | sudo bash -"
+      when: ansible_facts['distribution'] == 'CentOS' 
     - name: install nodejs
       package:
         name: nodejs
