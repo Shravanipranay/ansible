@@ -37,5 +37,24 @@
        file: 
          name: logs
          state: directory
+     - name: change permissions
+       ansible.builtin.file:
+         dest: ~./var/www/nopCommerce
+         recurse: true
+         owner: www-data
+         group: www-data
+         state: directory
+     - name: copy the service file
+       copy:
+         src: nopCommerce.service
+         dest: /etc/systemd/system/nopCommerce.service
+     - name: restrt the nopcommerce
+       systemd:
+         name: nopCommerec
+         daemon_reload: yes
+         state: restarted
+         enabled: yes
+
+         
      
       
