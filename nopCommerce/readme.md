@@ -44,3 +44,44 @@ sudo systemctl start nopCommerce.service
 sudo systemctl status nopCommerce.service
 ```
 ![preview](Images/nop1.png)
+
+
+
+### Ansible playbook
+```
+ First we have to install the package for that we will ust get_url module to download the file and the install the file.
+ ```
+ We have to install the dotnet.
+
+ - name: install apt transport
+   apt:
+     name: 
+        - apt-transport-https
+        - aspnetcore-runtime-7.0
+  Create one directory = module: File.
+  Then download the file= module: get_url
+  Unzip the downloaded file =module: Unarchive
+  Create directories= module: file
+  Then change the user and group chown chgrp= module:file
+  After that create one service file with the below content.
+   ```
+   [Unit]
+Description=Example nopCommerce app running on Xubuntu
+
+[Service]
+WorkingDirectory=/var/www/nopCommerce
+ExecStart=/usr/bin/dotnet /var/www/nopCommerce/Nop.Web.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=nopCommerce-example
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+```
+Then restart the system and check the service.
+
