@@ -1,8 +1,8 @@
-[app server]
+[appserver]
 172.31.42.178
 
-[web server]
+[webserver]
 172.31.46.151
 
-[db server]
+[dbserver]
 172.31.36.180

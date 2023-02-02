@@ -1,17 +1,17 @@
 ---
  - name: install on three servers
    become: yes
-   hosts: all
+   hosts: webserver
    roles:
     - ngnix_role
  - name: install on three servers
    become: yes
-   hosts: all
+   hosts: appserver
    roles:
     - nopcommerce_role
  - name: install on three servers
    become: yes
-   hosts: all
+   hosts: dbserver
    roles:
     - geerlingguy.mysql
     
