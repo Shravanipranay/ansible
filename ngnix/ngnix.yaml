@@ -5,6 +5,6 @@
    tasks: 
      - name: install ngnix
        apt:
-         name: ngnix
+         name: nginx
          update_cache: yes
          state: present
