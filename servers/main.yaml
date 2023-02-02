@@ -3,7 +3,7 @@
    become: yes
    hosts: webserver
    roles:
-    - ngnixrole
+    - nginxrole
  - name: install on three servers
    become: yes
    hosts: appserver
