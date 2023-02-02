@@ -1,0 +1,9 @@
+--- 
+ - name: install ngnix
+   become: yes
+   hosts: all
+   tasks: 
+     - name: install ngnix
+       apt:
+         name: ngnix
+         state: present
