@@ -1,6 +1,0 @@
----
- - name: install ngnix
-   become: yes
-   hosts: all
-   roles:
-    - nginxrole
