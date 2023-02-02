@@ -3,12 +3,12 @@
    become: yes
    hosts: webserver
    roles:
-    - ngnix_role
+    - ngnixrole
  - name: install on three servers
    become: yes
    hosts: appserver
    roles:
-    - nopcommerce_role
+    - nopcommerce
  - name: install on three servers
    become: yes
    hosts: dbserver
