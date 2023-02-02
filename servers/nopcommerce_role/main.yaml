@@ -1,0 +1,6 @@
+---
+ - name: calling nopcommerce role
+   become: yes
+   hosts: all
+   roles:
+    - nopcommerce

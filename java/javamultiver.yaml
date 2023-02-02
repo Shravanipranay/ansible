@@ -1,5 +1,5 @@
 ---
-- name: install wildfly
+- name: install JAVA
   hosts: all
   become: yes
   vars: 

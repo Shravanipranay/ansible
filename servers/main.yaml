@@ -1,0 +1,18 @@
+---
+ - name: install on three servers
+   become: yes
+   hosts: all
+   roles:
+    - ngnix_role
+ - name: install on three servers
+   become: yes
+   hosts: all
+   roles:
+    - nopcommerce_role
+ - name: install on three servers
+   become: yes
+   hosts: all
+   roles:
+    - geerlingguy.mysql
+    
+    

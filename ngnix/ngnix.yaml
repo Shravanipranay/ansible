@@ -1,9 +1,9 @@
 --- 
- - name: install ngnix
+ - name: install nginx
    become: yes
    hosts: all
    tasks: 
-     - name: install ngnix
+     - name: install nginx
        apt:
          name: nginx
          update_cache: yes

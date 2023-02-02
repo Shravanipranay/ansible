@@ -18,10 +18,6 @@
            - aspnetcore-runtime-7.0
          state: present
          update_cache: yes
-     - name: install ngnix
-       apt:
-         name: ngnix
-         state: started
      - name: make directory
        file:
          path: /var/www/nopCommerce

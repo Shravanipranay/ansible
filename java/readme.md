@@ -21,11 +21,30 @@ create roles and push it into virtual machine by using git hub.
 Then run the commnad ansible-playbbok -i hosts filename in virtual machine.
 Note: Filename should be in .yaml Format.
 ```
-
+---
+ - name: creating roles
+   become: yes
+   hosts: all
+   roles
+    - filename
 ### Ansible playbook
 
 By following the manual steps wrote a playbook by using the modules.
 And also run it on multidistribution ubuntu and centos
 Used version as a variable in ansible playbook.
+
+---
+- name: install wildfly
+  hosts: all
+  become: yes
+  vars: 
+    version: 11
+  tasks:
+   - name: install java
+     package:
+       name: "{{ java_pacakage_name }}"
+       update_cache: yes
+       state: present
+
 
 
