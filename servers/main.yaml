@@ -3,16 +3,18 @@
    become: yes
    hosts: webserver
    roles:
-    - nginxrole
+     - nginxrole
+
  - name: install on three servers
    become: yes
    hosts: appserver
    roles:
-    - nopcommerce
+     - nopcommerce
+
  - name: install on three servers
    become: yes
    hosts: dbserver
    roles:
-    - geerlingguy.mysql
+     - geerlingguy.mysql
     
     
