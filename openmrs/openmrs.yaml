@@ -53,7 +53,7 @@
          dest: /etc/systemd/system/tomcat.service
      - name: restart tomcat
        systemd:
-         name: tomcat
+         name: tomcat.service
          daemon_reload: yes
          enabled: yes
          state: started
