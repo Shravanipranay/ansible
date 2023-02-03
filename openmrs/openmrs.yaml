@@ -76,7 +76,7 @@
          dest: /tmp
      - name: copy the file
        copy:
-         src: OpenMRS_Platform_2.5.0/openmrs.war
+         src: /tmp/openmrs.war
          dest: /opt/tomcat/webapps/
          remote_src: yes
      - name: change ownership
