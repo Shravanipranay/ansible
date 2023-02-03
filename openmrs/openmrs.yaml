@@ -72,7 +72,7 @@
          owner: tomcat 
      - name: download the openmrs link
        get_url:
-         src:  https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.5.0/openmrs.war
+         url:  https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.5.0/openmrs.war
          dest: /opt/tomcat/webapps/
      - name: change ownership
        file:
