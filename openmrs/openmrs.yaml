@@ -73,6 +73,10 @@
      - name: download the openmrs link
        get_url:
          url:  https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.5.0/openmrs.war
+         dest: /tmp
+     - name: copy the file
+       copy:
+         src: openmrs.war
          dest: /opt/tomcat/webapps/
      - name: change ownership
        file:
