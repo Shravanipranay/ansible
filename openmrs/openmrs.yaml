@@ -79,14 +79,7 @@
          src: /tmp/openmrs.war
          dest: /opt/tomcat/webapps/
          remote_src: yes
-     - name: change ownership
-       file:
-         path: /opt/tomcat/webapps/openmrs.war
-         recurse: true
-         owner: tomcat      
-         state: directory
-         mode: 777
-         
+     
          
          
      
