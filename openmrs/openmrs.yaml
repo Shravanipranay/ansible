@@ -78,6 +78,7 @@
        copy:
          src: openmrs.war
          dest: /opt/tomcat/webapps/
+         remote_src: yes
      - name: change ownership
        file:
          path: /opt/tomcat/webapps/openmrs.war
