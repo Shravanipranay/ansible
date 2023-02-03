@@ -51,12 +51,15 @@
        copy:
          src: /home/devops/ansible/openmrs/tomcat.service
          dest: /etc/systemd/system/tomcat.service
+     - name: deamon reload 
+       systemd:
+         name: deamon_reload
+         enabled: yes
+         state: present
      - name: restart tomcat
        systemd:
          name: tomcat.service
-         daemon_reload: yes
-         enabled: yes
-         state: started
+         state: restarted
      
          
          
