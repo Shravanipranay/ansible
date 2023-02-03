@@ -47,7 +47,7 @@
          owner: tomcat
      - name: create service file
        copy:
-         src: /home/devops/ansible/openmrs
+         src: /home/devops/ansible/openmrs/tomcat.service
          dest: /etc/systemd/system/tomcat.service
      - name: restart tomcat
        systemd:
