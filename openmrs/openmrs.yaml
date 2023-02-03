@@ -37,8 +37,6 @@
          owner: tomcat
          group: tomcat
          state: directory
-     - name: add execute permissions to shell files
-       ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
      - name: adding the exuction permissions
        file: 
          path: conf
@@ -59,13 +57,13 @@
          dest: /etc/systemd/system/tomcat.service
      - name: daemon reload 
        systemd:
-         name: tomcat.service
+         name: tomcat
          daemon_reload: yes
          enabled: yes
          state: started
      - name: restart tomcat
        systemd:
-         name: tomcat.service
+         name: tomcat
          state: started
      
          
