@@ -23,13 +23,9 @@
      - name: download the url
        unarchive:
          src: https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109.tar.gz
-         dest: /opt/tomcat
+         dest: /tmp
          remote_src: yes
-     - name: create symbolic link
-       file:
-         src: /opt/tomcat/apache-tomcat-7.0.109
-         dest: /opt/tomcat/latest
-         state: link
+         extra_opts: [--strip-components=1]
      - name: change group
        file:
          dest: /opt/tomcat
@@ -53,19 +49,36 @@
          owner: tomcat
      - name: create service file
        copy:
-         src: tomcat.service
+         src: /home/devops/ansible/openmrs/tomcat.service
          dest: /etc/systemd/system/tomcat.service
      - name: daemon reload 
        systemd:
-         name: tomcat
+         name: tomcat.service
          daemon_reload: yes
          enabled: yes
          state: started
      - name: restart tomcat
        systemd:
-         name: tomcat
+         name: tomcat.service
          state: started
-     
+     - name: make directory
+       file:
+         name: /var/lib/OpenMRS
+         state: directory
+     - name: change ownership
+       file:
+         path: /var/lib/OpenMRS
+         recurse: true
+         owner: tomcat 
+     - name: download the openmrs link
+       get_url:
+         src:  https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.5.0/openmrs.war
+         dest: /opt/tomcat/webapps/
+     - name: change ownership
+       file:
+         path: /opt/tomcat/webapps/openmrs.war
+         recurse: true
+         owner: tomcat 
          
          
          
