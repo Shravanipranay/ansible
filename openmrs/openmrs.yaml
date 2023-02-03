@@ -39,12 +39,13 @@
          mode: g+x,u+x
      - name: changing the ownerships
        file: 
-         - webapps/
-         - work/
-         - temp/
-         - logs/
-          recurse: true
-          owner: tomcat
+         path:
+          - webapps/
+          - work/
+          - temp/
+          - logs/
+         recurse: true
+         owner: tomcat
      - name: create service file
        copy:
          src: /home/devops/ansible/openmrs/tomcat.service
