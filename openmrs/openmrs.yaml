@@ -54,7 +54,7 @@
      - name: deamon reload 
        systemd:
          name: tomcat.service
-         deamon_reload: yes
+         daemon_reload: yes
          enabled: yes
          state: started
      - name: restart tomcat
