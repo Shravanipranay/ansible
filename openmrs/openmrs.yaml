@@ -35,8 +35,9 @@
          state: directory
      - name: adding the exuction permissions
        file: 
-         path: /tomcat/latest/conf
+         path: conf
          mode: g+x,u+x
+         state: directory
      - name: changing the ownerships
        file: 
          path:
