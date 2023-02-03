@@ -54,7 +54,7 @@
      - name: restart tomcat
        systemd:
          name: tomcat
-         deamon_reload: yes
+         daemon_reload: yes
          enabled: yes
          state: started
          
