@@ -23,9 +23,13 @@
      - name: download the url
        unarchive:
          src: https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109.tar.gz
-         dest: /tmp
+         dest: /opt/tomcat
          remote_src: yes
-         extra_opts: [--strip-components=1]
+     - name: create symbolic link
+       file:
+         src: /opt/tomcat/apache-tomcat-7.0.109
+         dest: /opt/tomcat/latest
+         state: link
      - name: change group
        file:
          dest: /opt/tomcat
@@ -33,6 +37,8 @@
          owner: tomcat
          group: tomcat
          state: directory
+     - name: add execute permissions to shell files
+       ansible.builtin.command: "sudo sh -c 'chmod +x {{ user_home }}/latest/bin/*.sh'"
      - name: adding the exuction permissions
        file: 
          path: conf
