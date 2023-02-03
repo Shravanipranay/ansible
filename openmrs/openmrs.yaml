@@ -38,7 +38,7 @@
          group: tomcat
          state: directory
      - name: add execute permissions to shell files
-       ansible.builtin.command: "sudo sh -c 'chmod +x {{ user_home }}/latest/bin/*.sh'"
+       ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
      - name: adding the exuction permissions
        file: 
          path: conf
