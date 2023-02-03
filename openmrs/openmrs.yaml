@@ -26,4 +26,36 @@
          dest: /tmp
          remote_src: yes
          extra_opts: [--strip-components=1]
+     - name: change group
+       file:
+         dest: /opt/tomcat
+         recurse: true
+         owner: tomcat
+         group: tomcat
+         state: directory
+     - name: adding the exuction permissions
+       file: 
+         path: conf
+         mode: g+x,u+x
+     - name: changing the ownerships
+       file: 
+         - webapps/
+         - work/
+         - temp/
+         - logs/
+         recurse: true
+         owner: tomcat
+     - name: create service file
+       copy:
+         src: /home/devops/ansible/openmrs
+         dest: /etc/systemd/system/tomcat.service
+     - name: restart tomcat
+       systemd:
+         name: tomcat
+         deamon_reload: yes
+         state: restarted
+         enabled: yes
+         
+         
+         
      
