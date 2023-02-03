@@ -35,7 +35,7 @@
          state: directory
      - name: adding the exuction permissions
        file: 
-         path: conf
+         path: /etc/conf
          mode: g+x,u+x
      - name: changing the ownerships
        file: 
