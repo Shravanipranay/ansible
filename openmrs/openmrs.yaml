@@ -83,7 +83,8 @@
        file:
          path: /opt/tomcat/webapps/openmrs.war
          recurse: true
-         owner: tomcat 
+         owner: tomcat      
+         state: directory
          
          
          
