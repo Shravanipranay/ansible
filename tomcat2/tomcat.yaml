@@ -14,7 +14,7 @@
          dest: /tmp
      - name: untar the file
        unarchive:
-         src: apache-tomcat-10.0.8/*
+         src: apache-tomcat-10.0.8
          dest: /tmp
          remote_src: yes
      - name: make directory
@@ -23,7 +23,7 @@
          state: directory
      - name: moving the file 
        copy:
-         src: apache-tomcat-10.0.8/*
+         src: apache-tomcat-10.0.8
          dest: /opt/tomcat
      - name: changing the ownerships
        file: 
