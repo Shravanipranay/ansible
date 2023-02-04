@@ -19,7 +19,7 @@
          state: directory
      - name: moving the file 
        copy:
-         src: apache-tomcat-10.0.8
+         src: /tmp
          dest: /opt/tomcat
          remote_src: yes
      - name: changing the ownerships
