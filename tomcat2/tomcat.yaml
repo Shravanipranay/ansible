@@ -12,6 +12,7 @@
        unarchive:
          src: https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.8/bin/apache-tomcat-10.0.8.tar.gz
          dest: /tmp
+         remote_src: yes
      - name: make directory
        file:
          path: /opt/tomcat
