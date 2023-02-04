@@ -1,8 +1,8 @@
 Ansible playbook JIOP Tasks
 -------------------------------
-### playbook for tomcat with all possible options( normal,variables, conditionals, stats, loops, handlers
+ playbook for tomcat with all possible options( normal,variables, conditionals, stats, loops, handlers
    done by khaja sir in class to be done on our own
-## practice playbook for apache2 and nginx
+   practice playbook for apache2 and nginx
 
 1. playbook for wildfly and wildlfy web console
 2. playbook for wildfly using variables for multi distribution (ubuntu, centos)
@@ -15,3 +15,7 @@ Ansible playbook JIOP Tasks
 9. playbook for java and dotnet for multi version in a single playbook
 10. playbook for mysqldb, docker using ansible galaxy roles
 11. Playbook for dotnet and java and also nodejs on both centos and ubuntu with the multiversions and upload create the roles and push the file into virtual machine by using github.
+12. Playbook for nopcommerce and ngnix and mysql with the roles and install the three servers in three instatnce and give the 3 ip adresses on the same host file and run the (role) playbook.
+13. Playbook for Openmrs and tomcat and mysql with the roles and install the three servers in three instatnce and give the 3 ip adresses on the same host file and run the (role) playbook.
+14. define: Quality gate, idempotence, fault tolerance, business continuty and disaster and recovery, high availibility, latency,Infra as a code.
+15. Troubleshooting for network.
