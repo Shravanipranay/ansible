@@ -30,7 +30,7 @@
      - name: adding the exuction permissions
        file: 
          path: /opt/tomcat
-         mode: '755'
+         mode: '0755'
      - name: copy the user.xml file
        copy:
          src: /home/devops/ansible/tomcat2/user.xml
