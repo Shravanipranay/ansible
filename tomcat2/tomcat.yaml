@@ -32,15 +32,15 @@
          mode: '755'
      - name: copy the user.xml file
        copy:
-         src: /home/devops/ansible/TOMCAT2/user.xml
+         src: /home/devops/ansible/tomcat2/user.xml
          dest: /opt/tomcat/conf/tomcat-users.xml
      - name: copy the context file
        copy:
-         src: /home/devops/ansible/TOMCAT2/context.xml
+         src: /home/devops/ansible/tomcat2/context.xml
          dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
      - name: copy the context file
        copy:
-         src: /home/devops/ansible/TOMCAT2/tomcat.service
+         src: /home/devops/ansible/tomcat2/tomcat.service
          dest: /etc/systemd/system/tomcat.service
      - name: daemon reload 
        systemd:
