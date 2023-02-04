@@ -21,6 +21,7 @@
        copy:
          src: apache-tomcat-10.0.8
          dest: /opt/tomcat
+         remote_src: yes
      - name: changing the ownerships
        file: 
          path: www-data
