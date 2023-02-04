@@ -9,9 +9,14 @@
          update_cache: yes
          state: present
      - name: download the file
-       unarchive:
+       get_url:
          src: https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.8/bin/apache-tomcat-10.0.8.tar.gz
          dest: /tmp
+     - name: untar the file
+       unarchive:
+         src: apache-tomcat-10.0.8/*
+         dest: /tmp
+         remote_src: yes
      - name: make directory
        file:
          path: /opt/tomcat
