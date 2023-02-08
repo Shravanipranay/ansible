@@ -63,26 +63,7 @@
        systemd:
          name: tomcat.service
          state: started
-     - name: make directory
-       file:
-         name: /var/lib/OpenMRS
-         state: directory
-         owner: tomcat
-         group: tomcat
-     - name: change ownership
-       file:
-         path: /var/lib/OpenMRS
-         recurse: true
-         owner: tomcat 
-     - name: download the openmrs link
-       get_url:
-         url:  https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.5.0/openmrs.war
-         dest: /tmp
-     - name: copy the file
-       copy:
-         src: /tmp/openmrs.war
-         dest: /opt/tomcat/webapps/
-         remote_src: yes
+     
      
          
          
