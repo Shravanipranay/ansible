@@ -47,6 +47,8 @@
           - logs/
          recurse: true
          owner: tomcat
+     - name: add execute permissions to shell files
+       ansible.builtin.command: "sudo sh -c 'chmod +x {{ user_home }}/latest/bin/*.sh'"
      - name: create service file
        copy:
          src: /home/devops/ansible/openmrs/tomcat.service
