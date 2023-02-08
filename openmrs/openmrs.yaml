@@ -36,7 +36,7 @@
      - name: adding the exuction permissions
        file: 
          path: conf
-         mode: g+x,u+x
+         mode: g+r,g+x
          state: directory
      - name: changing the ownerships
        file: 
@@ -51,6 +51,8 @@
        copy:
          src: /home/devops/ansible/openmrs/tomcat.service
          dest: /etc/systemd/system/tomcat.service
+         owner: tomcat
+         group: tomcat
      - name: daemon reload 
        systemd:
          name: tomcat.service
@@ -65,6 +67,8 @@
        file:
          name: /var/lib/OpenMRS
          state: directory
+         owner: tomcat
+         group: tomcat
      - name: change ownership
        file:
          path: /var/lib/OpenMRS
