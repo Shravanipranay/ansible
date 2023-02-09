@@ -19,3 +19,12 @@ Ansible playbook JIOP Tasks
 13. Playbook for Openmrs and tomcat and mysql with the roles and install the three servers in three instatnce and give the 3 ip adresses on the same host file and run the (role) playbook.
 14. define: Quality gate, idempotence, fault tolerance, business continuty and disaster and recovery, high availibility, latency,Infra as a code.
 15. Troubleshooting for network.
+16. Write the manual steps for tomcat by seeing the tomcat playbook.
+17. Interview preparation for ansible.
+18. Write manual steps for springpet clinic and do gthis on any linux distribution.
+19. Write manual steps to build docker image
+      1. Install docker
+      2. Clone the nopcommerce code
+      3. docker image build -t nop:1.0
+20. Try to create skelton with four stages build_mac, build_linux, build_win, build_unix each stage 5 steps. Each step print some number.
+    1. Pipeline with only one job and 5 stages.
