@@ -16,7 +16,7 @@ jobs:
   - job: Shell_script
     displayName: scripting task
     steps:
-     - script: bash ansible/AZURE DEVOPS/diskpipeline/script.sh
+     - script: bash ./AZUREDEVOPS/diskpipeline/script.sh
   
   - job: update_package
     displayName: package update
