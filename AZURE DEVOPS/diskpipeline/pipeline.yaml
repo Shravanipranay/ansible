@@ -13,10 +13,15 @@ jobs:
       - script: df -H
         displayName: disk_utilization running 
 
-jobs:
- - job: Shell_script
-   displayName: scripting task
-   steps:
-    - 
+  - job: Shell_script
+    displayName: scripting task
+    steps:
+     - script: bash ansible/AZURE DEVOPS/diskpipeline/script.sh
+  
+  - job: update_package
+    displayName: package update
+    steps:
+      - script: sudo apt update
+        displayName: ubuntu package is updating
 
 
