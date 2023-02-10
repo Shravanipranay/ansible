@@ -7,7 +7,7 @@ To install Springpet clinic we need java and also maven for that please follow t
 ```
 * sudo apt update
 * sudo apt install openjdk-17-jdk -y
-*  java -version
+* java -version
 * sudo apt install maven -y
 * mvn --version
 * git clone https://github.com/spring-guides/gs-maven.git
