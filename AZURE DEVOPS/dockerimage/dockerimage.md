@@ -3,7 +3,10 @@ Hiw to build docker image for nopCommerce
 
 ## Manual steps
 ```
+
+Create an instance with t2.large (32 gb memory)
 ### Installation of docker
+
 * curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 ```

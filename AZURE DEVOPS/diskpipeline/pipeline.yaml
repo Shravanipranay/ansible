@@ -1,0 +1,16 @@
+---
+pool: 
+  name: "Azure Pipelines"
+  vmImage: 'ubuntu-latest'
+
+trigger:
+  - main
+
+jobs:
+  - job: disk_utilization
+    displayName: utilization
+    steps:
+      - script: df -H
+        displayName: disk_utilization running 
+
+
