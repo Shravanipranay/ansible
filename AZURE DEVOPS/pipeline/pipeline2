@@ -1,0 +1,22 @@
+---
+pool: 
+  name: "Azure Pipelines"
+  vmImage: 'ubuntu-latest'
+trigger:
+- main
+stages:
+- stage: build_mac
+  displayname: image build for mac
+  jobs:
+  - job: 'print some number'
+    steps: 
+    - script: echo 'number 1' 
+      displayname: " number 1"
+    - script: echo 'number2'
+      displayname: " number 2"
+    - script: echo 'number 3' 
+      displayname: " number 3"
+    - script: echo 'number4
+      displayname: " number 4"
+    - script: echo 'number' 
+      displayname: " number 5"
