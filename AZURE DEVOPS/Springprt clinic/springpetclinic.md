@@ -17,7 +17,7 @@ To install Springpet clinic we need java and also maven for that please follow t
 ![preview](Images/Screenshot_20230209_171652.png)
 * git clone https://github.com/spring-guides/gs-maven.git
 * cd gs-maven/initial
-* mvn package
+* mvn package   
 ```
 
 To see the springpetclic page in the web:
