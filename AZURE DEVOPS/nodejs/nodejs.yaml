@@ -1,23 +1,28 @@
----
-pool: 
-  name: "Azure Pipelines"
-  vmImage: 'ubuntu-latest'
+name: Node.js Build and Lint
 
-trigger:
-  - main
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  - job: install nodejs
-    displayname: installation
+  build-and-lint:
+    runs-on: ubuntu-latest
+
     steps:
-      - script: sudo apt install nodejs
-  - job: install npm
-    displayname: installation for npm
-    steps:
-      - script: sudo apt install npm
-  - job: building
-    displayname: building
-    steps:
-      - script: npm run build
-  
-    
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Build
+      run: npm run build
