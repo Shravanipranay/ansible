@@ -5,15 +5,19 @@ pool:
 
 trigger:
   - main
-steps:
-  - task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
-  
-  - script: sudo apt install npm
-    displayName: 'npm install'
-  - script: npm run build
-    displayName: 'npm build'
+
+jobs:
+  - job: install nodejs
+    displayname: installation
+    steps:
+      - script: sudo apt install nodejs
+  - job: install npm
+    displayname: installation for npm
+    steps:
+      - script: sudo apt install npm
+  - job: building
+    displayname: building
+    steps:
+      - script: npm run build
   
     
