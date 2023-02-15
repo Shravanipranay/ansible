@@ -1,0 +1,12 @@
+---
+pool:
+  name: 'Default'
+trigger:
+- main
+
+steps:
+ - script: ansible-playbook -i hosts javamultiver.yaml
+   displayName: Running_java
+   workingDirectory: /ansible.git/java
+
+ 
