@@ -28,3 +28,7 @@ Ansible playbook JIOP Tasks
       3. docker image build -t nop:1.0
 20. Try to create skelton with four stages build_mac, build_linux, build_win, build_unix each stage 5 steps. Each step print some number.
     1. Pipeline with only one job and 5 stages.
+21. Create pipeline for nodejs and run build 
+22. Call ansible playbook for java in azure devops
+23. 
+ 
