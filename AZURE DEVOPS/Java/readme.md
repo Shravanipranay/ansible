@@ -1,12 +1,18 @@
-# Call ansible playbook for java in azure devops (Self hosted) AACN
+# Call ansible playbook for java in azure devops (Self hosted) ACN
 
 * For this you need create self hosted agent.
     1. Lets configure a self hosted agent.
     2. Create a ubuntu vm(version 20)
     3. Lets try to build this application
     4. Self Hosted agents can be created in custom pools or default pool
+ 1. Login to azure devops
+ 2. navigate agent pools
+ 3. Navigate to default
+ 4. Click on new agent
+ 
+ In Terminal
 
-* make directory my agent
+* make directory myagent [Mkdir myagent]
 * cd myagent
 * Download the file from azure devops by using wget command.
 * Extract the file tar -zxvf
