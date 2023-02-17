@@ -1,0 +1,26 @@
+---
+ - name: install springpet clinic
+   hosts: all
+   become: yes
+   tasks:
+     - name: install java
+       apt:
+         name: openjdk-17-jdk
+         update_cache: yes
+         state: present
+     - name: install spc
+       get_url:
+         url: https://wget1.s3.eu-west-3.amazonaws.com//home/ubuntu/myagent/_work/1/s/target/spring-petclinic-2.7.3.jar
+         dest: /tmp
+     - name: copy the service the file
+       copy:
+         src: spc.service
+         dest: /etc/systemd/system/spc.service
+         remote_src: yes
+         mode: '777'
+     - name: daemon reload
+       systemd:
+         name: spc.service
+         daemon_reload: yes
+         state: started
+         enabled: yes

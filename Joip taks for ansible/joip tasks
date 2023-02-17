@@ -30,5 +30,6 @@ Ansible playbook JIOP Tasks
     1. Pipeline with only one job and 5 stages.
 21. Create pipeline for nodejs and run build 
 22. Call ansible playbook for java in azure devops
-23. 
+23. Build spring pet clint and create service file for spc. Copy the spc file into s3 bucket and write a playbook for spc building by using the url from the s3 bucket and write for the service file task. aFinally call the ansible playbook from azure devops pipeline.
+24. 
  

@@ -1,0 +1,11 @@
+---
+pool:
+  name: 'Default'
+
+trigger:
+  - main
+
+steps:
+  - script: ansible-playbook -i hosts bucket-pipeline.yaml
+    displayName: Running_spc
+    workingDirectory: ./bucket

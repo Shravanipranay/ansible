@@ -5,7 +5,18 @@ pool:
 trigger:
   - main
 
-steps:
-  - script: ansible-playbook -i hosts bucket-pipeline.yaml
-    displayName: Running_java
-    workingDirectory: ./bucket
+jobs:
+ - job: maven_job
+   displayName: maven
+   steps:
+     - task: Maven@3
+       inputs:
+         mavenPomFile: 'pom.xml'
+         publishJUnitResults: true
+         testResultsFiles: '**/surefire-reports/TEST-*.xml'
+         javaHomeOption: path
+         jdkDirectory: /usr/lib/jvm/java-17-openjdk-amd64
+         mavenVersionOption: path
+         mavenDirectory: /opt/maven
+         goals: 'package'
+     - script: aws s3 mv /home/ubuntu/myagent/_work/1/s/target/spring-petclinic-2.7.3.jar  s3://wget1//home/ubuntu/myagent/_work/1/s/target/spring-petclinic-2.7.3.jar
