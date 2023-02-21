@@ -4,6 +4,11 @@ pool:
 
 trigger:
   - main
+parameters:
+ - name: my_bucket
+   displayName: bucket
+   type: string
+   default: _work
 
 jobs:
  - job: maven_job
@@ -19,4 +24,30 @@ jobs:
          mavenVersionOption: path
          mavenDirectory: /opt/maven
          goals: 'package'
-     - script: aws s3 mv /home/ubuntu/myagent/_work/1/s/target/spring-petclinic-2.7.3.jar  s3://wget1//home/ubuntu/myagent/_work/1/s/target/spring-petclinic-2.7.3.jar
+     - script: "aws s3 mv /home/ubuntu/myagent/{{ my_bucket }}/1/s/target/spring-petclinic-2.7.3.jar  s3://wget1//home/ubuntu/myagent/{{ my_bucket }}/1/s/target/spring-petclinic-2.7.3.jar"
+
+
+
+
+     parameters:
+  - name: branch
+    displayName: Git Branch
+    type: string
+    default: 'main'
+  - name: agentvmImage
+    displayName: 'Agent VM Image'
+    type: string
+    default: 'ubuntu-latest'
+  - name: jdkVersion
+    displayName: 'Java Version'
+    type: string
+    default: '1.11'
+
+steps:
+  - task: Maven@3
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: 'package'
+      publishJUnitResults: yes
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      jdkVersionOption: "${{ parameters.jdkVersion }}"

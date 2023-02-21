@@ -1,0 +1,37 @@
+parameters:
+  - name: goals
+    displayName: goal
+    type: string
+    default: 'package'
+    values:
+      - package
+      - clean
+      - install
+      - compile
+  - name: mavenPomFile
+    displayName: pom
+    type: string
+    default: 'pom.xml'
+  - name: publishJUnitResults
+    displayName: publishresults
+    type: boolean
+    default: 'true'
+  - name: jdkVersionOption
+    displayName: version
+    type: string
+    default: '1.8'
+  
+jobs:
+ - job: maven_job
+   displayName: maven
+   steps:
+     - task: Maven@3
+       inputs:
+         mavenPomFile: "${{ parameters.mavenPomFile }}"
+         publishJUnitResults: "${{ parameters.publishJUnitResults }}"
+         testResultsFiles: '**/surefire-reports/TEST-*.xml'
+         jdkVersionOption: "${{ parameters.jdkVersionOption}}"
+         mavenVersionOption: path
+         mavenDirectory: /opt/maven
+         goals: "${{ parameters.goals }}"
+    

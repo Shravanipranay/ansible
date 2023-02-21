@@ -1,0 +1,15 @@
+---
+pool:
+  name: 'Azure Pipelines'
+  vmImage: 'Ubuntu-latest'
+
+trigger:
+  - main
+
+extends:
+    template: pipeline.yaml
+    parameters: 
+      goals: 'package'
+      mavenPomFile: 'pom.xml'
+      publishJUnitResults: 'true'
+      jdkVersionOption: '1.8'

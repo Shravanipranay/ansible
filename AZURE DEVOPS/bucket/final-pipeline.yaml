@@ -3,9 +3,12 @@
    hosts: all
    become: yes
    tasks:
+   variables:
+     java_version: openjdk-17-jdk
+     service_file: spc.service
      - name: install java
        apt:
-         name: openjdk-17-jdk
+         name: "{{ java_version }}"
          update_cache: yes
          state: present
      - name: install spc
@@ -14,13 +17,13 @@
          dest: /tmp
      - name: copy the service the file
        copy:
-         src: spc.service
-         dest: /etc/systemd/system/spc.service
+         src: "{{ service_file }}"
+         dest: "/etc/systemd/system/{{ service_file }}"
          remote_src: yes
          mode: '777'
      - name: daemon reload
        systemd:
-         name: spc.service
+         name: "{{ service_file }}"
          daemon_reload: yes
          state: started
          enabled: yes
